@@ -1,0 +1,247 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>La Ciprés · Catálogo</title>
+<meta name="description" content="Catálogo de La Ciprés: dulces y salados para cóctel y eventos a pedido en Chanco.">
+<meta name="theme-color" content="#8FA383">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<script>
+  /* =========================================================
+     CONFIGURACIÓN
+     Pega entre las comillas el link CSV publicado de Google Sheets
+     (Archivo → Compartir → Publicar en la web → CSV)
+     ========================================================= */
+  const SHEET_CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQoi_9oQU53BP5_73awQVR6sedHocTkT7LL-W5wCbb8pN68Hs2FR1pjwfwgF1quuDp3TOTq9lRchjO9/pub?gid=0&single=true&output=csv";
+  const WHATSAPP = "56982195945";
+  const INSTAGRAM = "la_cipres";
+</script>
+<style>
+:root{
+  --sage:#8FA383; --sage-d:#5F7553; --ink:#3D3935; --muted:#7A726A;
+  --bg:#F6F1E6; --card:#FFFDF8; --line:#E6DDCB; --chip:#EEF1E8; --accent:#5F7553;
+  --tab-bg:#E9E2D2;
+}
+body.dulce{
+  --bg:#EEF2F8; --card:#FFFFFF; --line:#D9E0EC; --chip:#F3E9EA; --accent:#8E6B70; --tab-bg:#DDE5F1;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:120px}
+body{margin:0;background:var(--bg);color:var(--ink);font:300 16px/1.55 "Jost",system-ui,sans-serif;transition:background .35s;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+.wrap{max-width:720px;margin:0 auto;padding:0 16px}
+header{text-align:center;padding:28px 16px 10px}
+.logo{width:132px;height:132px;display:block;margin:0 auto 12px;filter:drop-shadow(0 6px 14px rgba(70,80,60,.18))}
+.tag{margin:0;font-size:.82rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+.tag b{font-weight:500;color:var(--sage-d)}
+.switch{display:flex;gap:4px;background:var(--tab-bg);border-radius:999px;padding:4px;max-width:340px;margin:22px auto 6px}
+.switch button{flex:1;border:0;background:transparent;font:500 .95rem "Jost",sans-serif;letter-spacing:.06em;color:var(--muted);padding:10px 0;border-radius:999px;cursor:pointer;transition:.25s}
+.switch button[aria-selected=true]{background:var(--card);color:var(--accent);box-shadow:0 2px 8px rgba(0,0,0,.08)}
+nav.cats{position:sticky;top:0;z-index:5;background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+nav.cats .wrap{display:flex;gap:8px;overflow-x:auto;padding:12px 16px;scrollbar-width:none}
+nav.cats .wrap::-webkit-scrollbar{display:none}
+nav.cats a{flex:none;text-decoration:none;font-size:.85rem;padding:6px 14px;border:1px solid var(--line);border-radius:999px;background:var(--card);white-space:nowrap;color:var(--ink)}
+nav.cats a.on{background:var(--accent);border-color:var(--accent);color:#fff}
+main{padding:8px 0 110px}
+section.cat{padding-top:30px}
+h2{font:italic 600 2rem/1.1 "Cormorant Garamond",serif;color:var(--accent);margin:0 0 4px;display:flex;align-items:center;gap:12px}
+h2::after{content:"";flex:1;height:1px;background:var(--line)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:18px 18px 14px;margin-top:14px;box-shadow:0 1px 2px rgba(60,50,40,.04)}
+.card h3{font:600 1.35rem/1.2 "Cormorant Garamond",serif;margin:0 0 4px;color:var(--ink)}
+.desc{margin:0 0 10px;color:var(--muted);font-size:.95rem}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0 12px;padding:0;list-style:none}
+.chips li{background:var(--chip);border-radius:10px;padding:4px 10px;font-size:.86rem;line-height:1.35}
+.chips-label{font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin:2px 0 0}
+.prices{margin:4px 0 0;padding:0;list-style:none;border-top:1px dashed var(--line)}
+.prices li{display:flex;align-items:baseline;gap:8px;padding:8px 0;border-bottom:1px dashed var(--line);font-size:.95rem}
+.prices li:last-child{border-bottom:0}
+.prices .dots{flex:1;border-bottom:1px dotted #CFC6B6;transform:translateY(-4px);min-width:16px}
+.prices .p{font-weight:500;white-space:nowrap;color:var(--accent);font-variant-numeric:tabular-nums}
+.extra{font-size:.88rem;margin:8px 0 0;color:var(--sage-d)}
+.extra::before{content:"✦ "}
+.note{margin-top:14px;padding:14px 16px;border-radius:14px;background:color-mix(in srgb,var(--accent) 12%,var(--card));font-size:.93rem;border-left:3px solid var(--accent)}
+.how{counter-reset:s;list-style:none;padding:0;margin:14px 0 0}
+.how li{counter-increment:s;position:relative;padding:12px 0 12px 46px;border-bottom:1px solid var(--line)}
+.how li::before{content:counter(s);position:absolute;left:0;top:10px;width:32px;height:32px;border-radius:50%;background:var(--accent);color:#fff;display:grid;place-items:center;font:600 1.05rem "Cormorant Garamond",serif}
+.cta{display:flex;align-items:center;justify-content:center;gap:10px;margin:22px auto 0;max-width:340px;background:var(--sage-d);color:#fff;text-decoration:none;font-weight:500;letter-spacing:.04em;padding:14px 20px;border-radius:999px}
+.fab{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom));width:56px;height:56px;border-radius:50%;background:#25D366;display:grid;place-items:center;box-shadow:0 6px 18px rgba(0,0,0,.22);z-index:9}
+.fab svg,.cta svg{width:28px;height:28px;fill:#fff}
+.cta svg{width:22px;height:22px}
+footer{text-align:center;color:var(--muted);font-size:.85rem;padding:30px 16px 40px}
+footer a{color:var(--accent);text-decoration:none;font-weight:500}
+.status{text-align:center;color:var(--muted);padding:40px 0}
+@media (min-width:640px){h2{font-size:2.3rem}.logo{width:150px;height:150px}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+</style>
+</head>
+<body>
+<header>
+<svg role="img" aria-label="La Ciprés · Somos momentos" class="logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><circle cx="500" cy="500" r="500" fill="#8FA383"/>
+<g fill="#fff" stroke="#fff" stroke-width="0.6" stroke-linejoin="round"><path transform="translate(415.01 385)" d="M-9.66 28.35Q-11.13 28.35-12.39 27.72Q-15.33 25.83-15.33 22.47Q-15.33 21-14.70 19.74Q-13.44 17.22-9.03 13.44Q-4.62 9.66 0.42 6.72Q2.52 3.99 3.78 1.68Q5.04-0.63 5.67-2.31Q10.50-11.13 15.54-18.69Q20.58-26.25 25.62-32.76Q20.58-36.33 20.58-42.84Q20.58-48.30 23.31-53.97Q24.99-57.54 26.25-58.38Q27.72-59.22 28.14-58.80Q28.56-58.80 28.56-57.12Q28.56-55.65 27.51-53.13Q26.67-51.66 26.67-49.14Q26.67-43.89 31.50-40.32Q34.86-44.31 37.59-48.30Q45.99-59.22 53.55-68.56Q61.11-77.91 68.25-85.89Q77.49-96.39 88.41-105.84Q99.33-115.29 110.67-121.17Q122.01-127.05 132.51-127.05Q140.07-127.05 144.59-124.11Q149.10-121.17 149.10-115.50Q149.10-110.88 145.53-104.37Q141.75-97.86 135.34-90.09Q128.94-82.32 119.70-73.29Q107.52-61.11 93.77-50.92Q80.01-40.74 66.67-34.55Q53.34-28.35 42.21-28.35Q35.49-28.35 31.08-30.45Q25.83-23.73 21.21-16.91Q16.59-10.08 12.60-3.36Q12.39-1.89 9.66 2.52Q19.74-2.94 34.02-6.51Q48.30-10.08 63.95-11.97Q79.59-13.86 93.24-13.65Q101.85-13.65 106.36-9.55Q110.88-5.46 110.88 0Q110.88 0.63 110.77 1.47Q110.67 2.31 110.46 3.36Q110.25 6.72 108.88 9.34Q107.52 11.97 105.84 11.97Q103.53 11.97 102.90 5.67Q101.43 0.21 98.91-2.52Q96.39-5.25 89.25-5.25Q39.27-4.83 5.04 13.65Q3.36 17.01 1.68 19.53Q0 22.05-1.47 23.73Q-5.46 28.35-9.66 28.35M45.99-36.54Q61.95-36.54 80.85-47.88Q93.45-55.44 104.89-65.41Q116.34-75.39 125.47-86.10Q134.61-96.81 139.86-106.05Q143.22-111.93 143.22-115.50Q143.22-120.12 137.13-120.12Q135.03-120.12 132.09-119.49Q118.65-116.76 100.17-102.06Q87.99-92.40 76.33-81.16Q64.68-69.93 54.49-58.70Q44.31-47.46 36.54-37.80Q41.37-36.54 45.99-36.54"/><path transform="translate(533.66 385)" d="M36.96 5.67Q36.54 5.67 36.12 5.56Q35.70 5.46 35.28 5.25Q32.34 3.78 31.50 1.05Q30.66-1.68 31.08-5.88Q31.50-7.56 32.02-11.76Q32.55-15.96 33.39-18.48L22.68-8.19L16.80-2.52Q10.71 3.57 6.72 3.57Q5.04 3.57 3.99 2.31Q2.10 0 2.10-3.36Q2.10-7.77 4.41-12.81Q6.72-17.85 9.87-22.57Q13.02-27.30 15.54-30.45Q21.84-38.22 27.82-42.63Q33.81-47.04 40.32-47.04Q43.89-47.04 47.35-45.78Q50.82-44.52 53.76-41.58L53.97-41.37Q53.97-40.74 52.92-40.11Q52.50-39.69 52.18-39.48Q51.87-39.27 51.66-39.06Q49.14-36.54 45.99-30.66Q42.84-24.78 40.53-18.37Q38.22-11.97 38.22-7.35Q38.22-3.15 40.32-1.68Q41.37-1.05 42.63-1.05Q45.36-1.05 50.19-4.41Q50.40-4.62 51.13-5.14Q51.87-5.67 53.34-6.72Q55.02-7.98 56.07-7.98Q57.12-7.98 57.12-7.14Q57.12-5.88 55.44-4.20Q54.18-3.15 52.60-1.89Q51.03-0.63 48.93 0.63Q45.78 2.94 42.42 4.30Q39.06 5.67 36.96 5.67M13.23-7.77Q17.64-7.77 29.61-20.79Q32.76-24.36 35.28-27.61Q37.80-30.87 39.90-34.02Q43.68-40.11 42.42-42.42Q41.79-43.68 39.90-43.68Q37.59-43.68 33.60-41.27Q29.61-38.85 25.52-35.07Q21.42-31.29 18.06-27.51Q15.75-24.57 13.44-19.32Q11.13-14.07 11.13-10.71Q11.13-7.77 13.23-7.77"/><path transform="translate(244.70 600)" d="M52.50 20.10Q29.70 21 18.15 10.80Q6.60 0.60 6.60-18.60Q6.60-30.30 11.70-47.40Q25.80-90.60 51.30-123Q68.40-144.60 87.30-159.30Q106.20-174 124.80-181.65Q143.40-189.30 159.60-189.30Q161.10-189.30 163.20-189.15Q165.30-189 168-188.70Q177.90-187.20 185.55-180Q193.20-172.80 193.20-162Q193.20-156.30 190.80-150Q187.80-141.60 175.80-128.40Q164.10-115.20 146.55-103.35Q129-91.50 109.80-86.10Q103.80-84.60 101.10-84.60Q90.60-84.60 90.60-94.20Q90.60-105.90 106.20-125.10Q110.40-130.80 113.70-130.80Q115.50-130.50 115.50-128.10Q115.20-126.30 112.20-122.40Q101.10-107.70 101.10-98.40Q101.10-94.80 103.05-93Q105-91.20 108-91.80Q125.40-95.40 139.20-104.40Q153-113.40 163.05-126.15Q173.10-138.90 178.50-153Q180.90-159.30 180.90-164.40Q180.90-171.90 175.95-175.95Q171-180 163.50-180Q144.90-180 115.80-160.80Q96-147.90 77.40-129.60Q58.80-111.30 44.55-90.15Q30.30-69 23.40-47.40Q19.20-34.20 19.20-22.80Q19.20-6.60 28.05 2.25Q36.90 11.10 52.80 11.10Q70.20 11.10 94.50-3Q109.80-12 124.80-23.70Q139.80-35.40 152.85-48.30Q165.90-61.20 174.90-73.20Q177.30-75.60 178.80-75.60Q179.70-75.60 179.70-74.40Q179.70-71.40 177.30-68.10Q170.10-58.50 160.95-48.75Q151.80-39 140.40-28.80Q125.40-15.30 109.50-4.35Q93.60 6.60 78.90 13.05Q64.20 19.50 52.50 20.10"/><path transform="translate(405.20 600)" d="M36.30-65.70Q32.40-65.70 32.40-67.50Q32.40-69 34.65-71.85Q36.90-74.70 39.90-76.80Q46.50-81 50.25-84Q54-87 59.40-94.20Q59.70-93.60 59.70-91.80Q59.70-87.90 56.55-82.35Q53.40-76.80 49.50-72.30Q45.60-67.80 42.60-66.60Q39.90-65.70 36.30-65.70M9.60 7.80Q7.20 7.80 5.10 6Q3 4.20 3 1.20Q3-5.10 11.70-21.90L15-28.50Q15.60-29.10 16.65-31.50Q17.70-33.90 19.80-37.80Q21.90-42 23.10-45.30Q24.30-48.60 24.90-51.60Q24.90-51.90 26.10-52.80Q27.30-53.70 28.50-54.30L30.30-54.60Q32.70-54.60 34.35-53.70Q36-52.80 35.40-51.30Q33.30-46.80 31.80-43.50Q30.30-40.20 29.40-37.80L29.10-37.80Q25.80-30.30 23.55-23.55Q21.30-16.80 21.60-10.80L21.90-2.70Q21.60 0.30 19.80 2.40Q18.60 3.30 16.50 4.65Q14.40 6 11.10 7.50Q10.80 7.80 9.60 7.80"/><path transform="translate(437.90 600)" d="M-38.70 86.70Q-41.70 86.70-42.90 86.10Q-43.80 85.20-44.70 84Q-45.60 82.80-45.60 81.90Q-45 69-37.50 52.50Q-30 36-17.85 18Q-5.70 0 8.10-16.50Q20.40-31.50 25.20-39Q29.10-45.60 34.35-58.35Q39.60-71.10 46.20-89.70Q46.80-91.50 50.70-92.10Q55.50-92.10 55.50-84.90Q55.50-81 54.60-79.20Q54.30-77.70 53.85-76.35Q53.40-75 53.10-74.40Q52.20-72.60 52.20-72Q52.20-72 52.50-71.10Q52.80-70.20 53.10-68.70Q63-73.50 70.50-76.35Q78-79.20 84.90-79.20Q93-79.20 96-73.80Q96.90-72 96.90-69.30Q96.90-62.70 91.80-52.65Q86.70-42.60 78.75-31.95Q70.80-21.30 61.50-12.90Q58.20-9.90 52.05-6.30Q45.90-2.70 38.85 0.45Q31.80 3.60 25.35 5.70Q18.90 7.80 15.30 7.80Q11.40 15.90 7.50 23.55Q3.60 31.20-0.60 38.40Q-19.80 72.60-34.80 86.10Q-35.40 86.70-38.70 86.70M27-16.50L21.60-5.10Q35.70-7.50 51.60-17.40Q67.50-27.30 78-41.10Q88.50-54.90 87.60-68.70Q85.80-74.10 80.10-74.10Q76.20-74.10 70.35-71.40Q64.50-68.70 58.50-64.50Q52.50-60.30 47.85-56.10Q43.20-51.90 41.40-48.90Q39.90-46.80 37.80-41.40Q36.60-39 36-37.20Q35.40-35.40 35.10-34.80Q33.60-30.90 31.50-26.25Q29.40-21.60 27-16.50M-35.10 69Q-35.10 70.20-34.50 70.20Q-33 70.20-29.10 65.70Q-22.80 59.10-19.50 53.70Q-13.50 44.10-8.25 34.50Q-3 24.90 1.80 15.30Q11.70-3.90 10.20-8.10Q5.70-3.60-0.45 4.95Q-6.60 13.50-13.05 24Q-19.50 34.50-25.05 44.85Q-30.60 55.20-33.60 63.30Q-35.10 68.40-35.10 69"/><path transform="translate(519.20 600)" d="M5.40 6.30Q1.50 6.30 1.50-0.60Q1.50-6.30 4.20-11.70Q11.10-24.90 16.80-37.80Q20.70-45.60 24.15-52.80Q27.60-60 30.60-66Q32.40-67.80 34.20-67.80Q38.10-67.80 36.60-64.20Q36-62.10 34.95-59.25Q33.90-56.40 32.40-52.50Q27.60-39.90 26.70-34.80Q35.10-42.30 43.95-48.75Q52.80-55.20 60.60-59.40Q68.40-63.60 73.80-63.60Q78.60-63.60 78.60-59.70Q78.60-56.40 75.60-52.65Q72.60-48.90 69.60-48.90Q68.10-48.90 67.20-49.80Q66.30-50.10 63.60-50.10Q54-50.10 43.50-40.80Q32.40-31.50 23.40-18.45Q14.40-5.40 10.20 4.20Q8.10 6.30 5.40 6.30"/><path transform="translate(578.30 600)" d="M22.50 3.30Q16.20 3.30 11.40 0Q3.60-6 3.60-18Q3.60-30 12-43.50Q20.40-57 37.50-68.40Q40.50-70.50 45.60-70.50Q52.20-70.50 57.45-66.90Q62.70-63.30 61.50-57.60Q59.40-48.30 52.35-41.10Q45.30-33.90 35.85-28.35Q26.40-22.80 16.50-17.70Q16.20-16.80 16.05-15.90Q15.90-15 15.90-14.10Q15.90-9.90 18.75-6.75Q21.60-3.60 26.70-3.60Q30.60-3.60 33.30-4.80Q38.10-6.60 41.25-8.10Q44.40-9.60 48.60-12.60Q52.80-15.60 60-21.60Q63.30-24 63.90-24Q65.70-24 65.10-21.30Q62.10-16.50 54.75-10.80Q47.40-5.10 38.55-0.90Q29.70 3.30 22.50 3.30M18.30-25.80Q20.70-25.80 28.20-30.60Q35.70-35.40 42.30-41.10Q53.70-51.60 53.70-57.30Q53.70-58.80 52.80-60Q51.90-61.50 50.10-61.50Q44.40-61.50 30.90-48Q21.60-39 18.30-25.80M39.60-80.40Q38.10-80.40 38.10-81.30Q38.10-81.90 38.70-82.50Q43.80-87.60 50.40-94.05Q57-100.50 62.40-105.30Q63.60-106.50 64.35-106.65Q65.10-106.80 66.30-106.80Q68.40-106.80 70.05-103.80Q71.70-100.80 70.50-99.90Q65.40-96 60-92.40Q54.60-88.80 49.20-85.20Q41.70-80.40 39.60-80.40"/><path transform="translate(637.70 600)" d="M-2.40 12.60Q-7.20 12.60-10.80 11.70Q-14.10 10.80-14.10 9.30Q-14.10 6.90-9.30 6.60Q-4.80 6.30-3.30 5.70Q-0.60 5.10 3 4.80Q6.30 4.20 8.40 3.90Q22.80-0.30 22.80-9Q22.80-15 16.50-24.30Q12.60-30 12.60-36.90Q12.60-45.30 17.85-53.40Q23.10-61.50 31.05-67.65Q39-73.80 47.10-75.90Q50.70-76.80 54.60-76.80Q60.90-76.80 63.60-73.80Q65.40-72 65.40-66Q65.40-61.50 63.90-56.85Q62.40-52.20 59.70-49.20Q58.20-47.70 57.30-47.70Q55.80-47.70 55.80-51.90L56.10-57.90Q56.40-60.30 56.55-62.10Q56.70-63.90 56.70-65.10Q56.70-70.20 54.60-71.10Q52.20-71.70 51.30-71.70Q45-71.70 37.80-66Q30.60-60.30 26.10-52.80Q24.30-50.10 24.30-46.20Q24.30-41.40 26.85-34.95Q29.40-28.50 30.60-25.50Q33.60-18.90 35.25-14.10Q36.90-9.30 36.90-5.70Q36.90-3.90 36.60-3Q38.10-3.60 43.80-4.80Q48.90-6 52.50-6Q54.60-6 54.60-5.10Q54.60-4.80 52.80-3Q51.90-2.10 47.25-0.15Q42.60 1.80 36.45 3.90Q30.30 6 24.30 7.80Q18.30 9.60 14.10 10.50Q6.90 12.60-2.40 12.60"/></g><g fill="#fff" fill-opacity=".92"><path transform="translate(461.54 680)" d="M8.65 0.22Q6.41 0.22 4.37-0.46Q2.32-1.15 1.15-2.24L2.18-4.42Q3.30-3.44 5.04-2.80Q6.78-2.16 8.65-2.16Q10.36-2.16 11.42-2.55Q12.49-2.94 12.99-3.63Q13.50-4.31 13.50-5.18Q13.50-6.19 12.84-6.80Q12.18-7.42 11.13-7.80Q10.08-8.18 8.82-8.46Q7.56-8.74 6.29-9.11Q5.01-9.49 3.96-10.08Q2.91-10.67 2.27-11.66Q1.62-12.66 1.62-14.22Q1.62-15.74 2.42-17.01Q3.22-18.28 4.89-19.05Q6.55-19.82 9.13-19.82Q10.84-19.82 12.52-19.38Q14.20-18.93 15.43-18.09L14.50-15.85Q13.24-16.69 11.84-17.07Q10.44-17.44 9.13-17.44Q7.48-17.44 6.41-17.02Q5.35-16.60 4.86-15.90Q4.37-15.20 4.37-14.34Q4.37-13.30 5.03-12.68Q5.68-12.07 6.73-11.70Q7.78-11.34 9.04-11.05Q10.30-10.75 11.58-10.39Q12.85-10.02 13.90-9.44Q14.95-8.85 15.60-7.87Q16.24-6.89 16.24-5.35Q16.24-3.86 15.43-2.59Q14.62-1.32 12.92-0.55Q11.23 0.22 8.65 0.22"/><path transform="translate(483.92 680)" d="M11.79 0.22Q9.55 0.22 7.63-0.53Q5.71-1.29 4.31-2.65Q2.91-4 2.13-5.82Q1.34-7.64 1.34-9.80Q1.34-11.96 2.13-13.78Q2.91-15.60 4.31-16.95Q5.71-18.31 7.62-19.07Q9.52-19.82 11.79-19.82Q14.03-19.82 15.92-19.08Q17.81-18.34 19.22-16.98Q20.64-15.62 21.41-13.80Q22.18-11.98 22.18-9.80Q22.18-7.62 21.41-5.80Q20.64-3.98 19.22-2.62Q17.81-1.26 15.92-0.52Q14.03 0.22 11.79 0.22M11.79-2.27Q13.41-2.27 14.80-2.83Q16.18-3.39 17.21-4.41Q18.23-5.43 18.80-6.80Q19.38-8.18 19.38-9.80Q19.38-11.42 18.80-12.80Q18.23-14.17 17.21-15.19Q16.18-16.21 14.80-16.77Q13.41-17.33 11.79-17.33Q10.14-17.33 8.75-16.77Q7.36-16.21 6.33-15.19Q5.29-14.17 4.72-12.80Q4.14-11.42 4.14-9.80Q4.14-8.18 4.72-6.80Q5.29-5.43 6.33-4.41Q7.36-3.39 8.75-2.83Q10.14-2.27 11.79-2.27"/><path transform="translate(512.44 680)" d="M5.63 0L2.94 0L2.94-19.60L5.24-19.60L13.41-5.82L21.48-19.60L23.77-19.60L23.80 0L21.11 0L21.08-14.28L14-2.38L12.71-2.38L5.63-14.20"/><path transform="translate(544.18 680)" d="M11.79 0.22Q9.55 0.22 7.63-0.53Q5.71-1.29 4.31-2.65Q2.91-4 2.13-5.82Q1.34-7.64 1.34-9.80Q1.34-11.96 2.13-13.78Q2.91-15.60 4.31-16.95Q5.71-18.31 7.62-19.07Q9.52-19.82 11.79-19.82Q14.03-19.82 15.92-19.08Q17.81-18.34 19.22-16.98Q20.64-15.62 21.41-13.80Q22.18-11.98 22.18-9.80Q22.18-7.62 21.41-5.80Q20.64-3.98 19.22-2.62Q17.81-1.26 15.92-0.52Q14.03 0.22 11.79 0.22M11.79-2.27Q13.41-2.27 14.80-2.83Q16.18-3.39 17.21-4.41Q18.23-5.43 18.80-6.80Q19.38-8.18 19.38-9.80Q19.38-11.42 18.80-12.80Q18.23-14.17 17.21-15.19Q16.18-16.21 14.80-16.77Q13.41-17.33 11.79-17.33Q10.14-17.33 8.75-16.77Q7.36-16.21 6.33-15.19Q5.29-14.17 4.72-12.80Q4.14-11.42 4.14-9.80Q4.14-8.18 4.72-6.80Q5.29-5.43 6.33-4.41Q7.36-3.39 8.75-2.83Q10.14-2.27 11.79-2.27"/><path transform="translate(572.70 680)" d="M8.65 0.22Q6.41 0.22 4.37-0.46Q2.32-1.15 1.15-2.24L2.18-4.42Q3.30-3.44 5.04-2.80Q6.78-2.16 8.65-2.16Q10.36-2.16 11.42-2.55Q12.49-2.94 12.99-3.63Q13.50-4.31 13.50-5.18Q13.50-6.19 12.84-6.80Q12.18-7.42 11.13-7.80Q10.08-8.18 8.82-8.46Q7.56-8.74 6.29-9.11Q5.01-9.49 3.96-10.08Q2.91-10.67 2.27-11.66Q1.62-12.66 1.62-14.22Q1.62-15.74 2.42-17.01Q3.22-18.28 4.89-19.05Q6.55-19.82 9.13-19.82Q10.84-19.82 12.52-19.38Q14.20-18.93 15.43-18.09L14.50-15.85Q13.24-16.69 11.84-17.07Q10.44-17.44 9.13-17.44Q7.48-17.44 6.41-17.02Q5.35-16.60 4.86-15.90Q4.37-15.20 4.37-14.34Q4.37-13.30 5.03-12.68Q5.68-12.07 6.73-11.70Q7.78-11.34 9.04-11.05Q10.30-10.75 11.58-10.39Q12.85-10.02 13.90-9.44Q14.95-8.85 15.60-7.87Q16.24-6.89 16.24-5.35Q16.24-3.86 15.43-2.59Q14.62-1.32 12.92-0.55Q11.23 0.22 8.65 0.22"/><path transform="translate(607.62 680)" d="M5.63 0L2.94 0L2.94-19.60L5.24-19.60L13.41-5.82L21.48-19.60L23.77-19.60L23.80 0L21.11 0L21.08-14.28L14-2.38L12.71-2.38L5.63-14.20"/><path transform="translate(639.36 680)" d="M11.79 0.22Q9.55 0.22 7.63-0.53Q5.71-1.29 4.31-2.65Q2.91-4 2.13-5.82Q1.34-7.64 1.34-9.80Q1.34-11.96 2.13-13.78Q2.91-15.60 4.31-16.95Q5.71-18.31 7.62-19.07Q9.52-19.82 11.79-19.82Q14.03-19.82 15.92-19.08Q17.81-18.34 19.22-16.98Q20.64-15.62 21.41-13.80Q22.18-11.98 22.18-9.80Q22.18-7.62 21.41-5.80Q20.64-3.98 19.22-2.62Q17.81-1.26 15.92-0.52Q14.03 0.22 11.79 0.22M11.79-2.27Q13.41-2.27 14.80-2.83Q16.18-3.39 17.21-4.41Q18.23-5.43 18.80-6.80Q19.38-8.18 19.38-9.80Q19.38-11.42 18.80-12.80Q18.23-14.17 17.21-15.19Q16.18-16.21 14.80-16.77Q13.41-17.33 11.79-17.33Q10.14-17.33 8.75-16.77Q7.36-16.21 6.33-15.19Q5.29-14.17 4.72-12.80Q4.14-11.42 4.14-9.80Q4.14-8.18 4.72-6.80Q5.29-5.43 6.33-4.41Q7.36-3.39 8.75-2.83Q10.14-2.27 11.79-2.27"/><path transform="translate(667.88 680)" d="M5.63 0L2.94 0L2.94-19.60L5.24-19.60L13.41-5.82L21.48-19.60L23.77-19.60L23.80 0L21.11 0L21.08-14.28L14-2.38L12.71-2.38L5.63-14.20"/><path transform="translate(699.62 680)" d="M17.16 0L2.94 0L2.94-19.60L16.77-19.60L16.77-17.16L5.74-17.16L5.74-11.14L15.57-11.14L15.57-8.76L5.74-8.76L5.74-2.44L17.16-2.44"/><path transform="translate(723.38 680)" d="M5.74 0L2.94 0L2.94-19.60L5.24-19.60L17-4.98L17-19.60L19.80-19.60L19.80 0L17.50 0L5.74-14.62"/><path transform="translate(751.12 680)" d="M9.60 0L6.83 0L6.83-17.16L0.11-17.16L0.11-19.60L16.32-19.60L16.32-17.16L9.60-17.16"/><path transform="translate(772.56 680)" d="M11.79 0.22Q9.55 0.22 7.63-0.53Q5.71-1.29 4.31-2.65Q2.91-4 2.13-5.82Q1.34-7.64 1.34-9.80Q1.34-11.96 2.13-13.78Q2.91-15.60 4.31-16.95Q5.71-18.31 7.62-19.07Q9.52-19.82 11.79-19.82Q14.03-19.82 15.92-19.08Q17.81-18.34 19.22-16.98Q20.64-15.62 21.41-13.80Q22.18-11.98 22.18-9.80Q22.18-7.62 21.41-5.80Q20.64-3.98 19.22-2.62Q17.81-1.26 15.92-0.52Q14.03 0.22 11.79 0.22M11.79-2.27Q13.41-2.27 14.80-2.83Q16.18-3.39 17.21-4.41Q18.23-5.43 18.80-6.80Q19.38-8.18 19.38-9.80Q19.38-11.42 18.80-12.80Q18.23-14.17 17.21-15.19Q16.18-16.21 14.80-16.77Q13.41-17.33 11.79-17.33Q10.14-17.33 8.75-16.77Q7.36-16.21 6.33-15.19Q5.29-14.17 4.72-12.80Q4.14-11.42 4.14-9.80Q4.14-8.18 4.72-6.80Q5.29-5.43 6.33-4.41Q7.36-3.39 8.75-2.83Q10.14-2.27 11.79-2.27"/><path transform="translate(801.08 680)" d="M8.65 0.22Q6.41 0.22 4.37-0.46Q2.32-1.15 1.15-2.24L2.18-4.42Q3.30-3.44 5.04-2.80Q6.78-2.16 8.65-2.16Q10.36-2.16 11.42-2.55Q12.49-2.94 12.99-3.63Q13.50-4.31 13.50-5.18Q13.50-6.19 12.84-6.80Q12.18-7.42 11.13-7.80Q10.08-8.18 8.82-8.46Q7.56-8.74 6.29-9.11Q5.01-9.49 3.96-10.08Q2.91-10.67 2.27-11.66Q1.62-12.66 1.62-14.22Q1.62-15.74 2.42-17.01Q3.22-18.28 4.89-19.05Q6.55-19.82 9.13-19.82Q10.84-19.82 12.52-19.38Q14.20-18.93 15.43-18.09L14.50-15.85Q13.24-16.69 11.84-17.07Q10.44-17.44 9.13-17.44Q7.48-17.44 6.41-17.02Q5.35-16.60 4.86-15.90Q4.37-15.20 4.37-14.34Q4.37-13.30 5.03-12.68Q5.68-12.07 6.73-11.70Q7.78-11.34 9.04-11.05Q10.30-10.75 11.58-10.39Q12.85-10.02 13.90-9.44Q14.95-8.85 15.60-7.87Q16.24-6.89 16.24-5.35Q16.24-3.86 15.43-2.59Q14.62-1.32 12.92-0.55Q11.23 0.22 8.65 0.22"/></g></svg>
+<p class="tag">Dulces &amp; eventos a pedido · <b>Chanco</b></p>
+<div class="switch" role="tablist" aria-label="Catálogo">
+  <button role="tab" data-cat="Salado" aria-selected="true">Salado</button>
+  <button role="tab" data-cat="Dulce" aria-selected="false">Dulce</button>
+</div>
+</header>
+<nav class="cats" aria-label="Categorías"><div class="wrap" id="nav"></div></nav>
+<main class="wrap" id="menu"><p class="status">Cargando catálogo…</p></main>
+<footer>
+  <p>Pedidos por WhatsApp · <a id="ig" href="#" target="_blank" rel="noopener">@la_cipres</a></p>
+  <p>Precios en pesos chilenos, sujetos a disponibilidad.</p>
+</footer>
+<a class="fab" id="fab" href="#" target="_blank" rel="noopener" aria-label="Escríbenos por WhatsApp"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21h.01c5.46 0 9.91-4.45 9.91-9.91A9.85 9.85 0 0 0 12.04 2zm5.8 14.08c-.24.68-1.42 1.32-1.95 1.36-.5.05-.97.23-3.27-.68-2.76-1.09-4.5-3.92-4.64-4.1-.13-.18-1.1-1.47-1.1-2.8 0-1.33.7-1.99.95-2.26.24-.27.53-.34.71-.34h.51c.16 0 .38-.06.6.46.23.54.77 1.87.84 2 .07.14.11.3.02.48-.09.18-.14.3-.27.46-.14.16-.29.36-.41.48-.14.14-.28.29-.12.56.16.27.71 1.17 1.52 1.89 1.04.93 1.92 1.22 2.19 1.35.27.14.43.11.59-.07.16-.18.68-.79.86-1.07.18-.27.36-.23.6-.14.25.09 1.57.74 1.84.88.27.13.45.2.52.31.07.11.07.66-.17 1.33z"/></svg></a>
+
+<!-- Copia de respaldo: se usa solo si Google Sheets no responde -->
+<script type="text/plain" id="respaldo">catalogo,categoria,producto,descripcion,opciones,precio1_detalle,precio1,precio2_detalle,precio2,precio3_detalle,precio3,precio4_detalle,precio4,nota,disponible
+Salado,Brochetas,Tradicional,,"Queso, aceituna y salame; Queso, choclito y lechuga; Queso, jamón y pepinillo; Fruta (3) según disponibilidad",25 un. (1 variedad),9500,50 un. (2 variedades),18000,100 un. (4 variedades),35000,,,,SI
+Salado,Brochetas,Premium,,Queso de cabra y pepino; Pollo mostaza miel con verduras; Pollo al ajo con orégano con verduras; Camarón con perejil,25 un. (1 variedad),22000,50 un. (2 variedades),42000,100 un. (4 variedades),80000,,,,SI
+Salado,Mini chaparritas,,Vienesas (receta del abuelo) con queso envueltas en masa.,,25 un. (1 variedad),14000,50 un. (2 variedades),26000,100 un. (4 variedades),50000,,,,SI
+Salado,Mini empanadas,,,Queso; Pino; Marisco; Queso y camarón; Queso y choclo; Queso y aceituna; Queso y cebolla caramelizada,25 un. (1 variedad),14500,50 un. (2 variedades),28000,100 un. (4 variedades),55000,,,,SI
+Salado,Mini pizzas,,Todas con base de salsa de tomate y queso sobre masa artesanal y con orégano. Aprox. 6 cm de diámetro.,Salame; Aceituna; Choclo; Cebolla caramelizada; Champiñones; Pimentón asado; Pollo; Jamón,25 un. (1 variedad),14000,50 un. (2 variedades),26000,100 un. (4 variedades),50000,,,,SI
+Salado,Crostinis,Tradicional,Base de pan tostado con especias y queso crema.,"Mix de aceitunas; Pimentón asado; Cebolla caramelizada, champiñón y sésamo; Pepinillos dill con ají encurtido; Zanahorias encurtidas; Tomates asados",25 un. (1 variedad),11000,50 un. (2 variedades),20000,100 un. (4 variedades),38000,,,,SI
+Salado,Crostinis,Premium,Base de pan tostado con especias y queso crema.,"Queso azul, pera, nuez y miel; Crema de palta, queso de cabra y ají verde; Jamón serrano y espinaca; Hummus de garbanzos con pepino; Camarón pil-pil; Tocino crocante y queso grillado; Jibia marinada en salsa de soya",25 un. (1 variedad),14000,50 un. (2 variedades),26000,100 un. (4 variedades),50000,,,,SI
+Salado,Canapés,Tradicional,,"Queso, jamón y almendra; Choritos con salsa verde; Pasta de huevo; Choclitos y salsa de perejil; Pepinillo encurtido y sésamo; Pollo pimentón asado",25 un. (1 variedad),7000,50 un. (2 variedades),13000,100 un. (4 variedades),25000,,,,SI
+Salado,Canapés,Premium,,Palmito y alcaparra; Camarón al ajillo; Pollo con maní; Ceviche de jaiba; Mousse de palta y nuez,25 un. (1 variedad),8500,50 un. (2 variedades),15500,100 un. (4 variedades),28500,,,,SI
+Salado,Mini sopaipillas,,Incluyen chancho en piedra (opcional con o sin ají). Tamaño aprox. 5 cm.,,25 un.,3500,50 un.,6000,100 un.,10000,,,,SI
+Salado,Tapaditos,Pan de cóctel (30 g aprox.),,"Ave pimentón; Pasta de huevo; Hummus de garbanzos y lechuga; Queso, jamón y mayonesa; Queso crema y salame; Quesillo y cebolla caramelizada",25 un. (1 variedad),10000,50 un. (2 variedades),18000,100 un. (4 variedades),35000,,,,SI
+Salado,Tapaditos,Mini sándwich (50 g aprox.),Mismas variedades que el pan de cóctel.,,25 un. (1 variedad),15000,50 un. (2 variedades),28000,100 un. (4 variedades),55000,,,,SI
+Salado,Mini sándwich,Pan mini sándwich (50 g aprox.),,"Mini burger (carne de vacuno, queso cheddar, pepinillo); Mini burger veggie (burger de lenteja, lechuga, tomate, mayo); Mini churrasco (carne de vacuno, lechuga, tomate, mayonesa); Mini lomito (carne de cerdo, lechuga, tomate, mayonesa); Mini mechada Luco (carne de vacuno y queso); Mini ave (carne de pollo, lechuga, tomate, mayonesa)",25 un. (1 variedad),32000,50 un. (2 variedades),60000,100 un. (4 variedades),100000,,,,SI
+Salado,Cómo comprar,,Revisa el catálogo y háblanos por WhatsApp al +569 821 95 945.,,,,,,,,,,,SI
+Salado,Cómo comprar,,Siempre consulta por disponibilidad para el día que te interesa. Estamos agendando con mínimo 5 días de anticipación para cóctel y eventos.,,,,,,,,,,,SI
+Salado,Cómo comprar,,"Si requieres una cotización que incluya servicio de garzones y vajilla, ¡coméntanos!",,,,,,,,,,,SI
+Salado,Cómo comprar,,Coordinemos la entrega.,,,,,,,,,,,SI
+Salado,Cómo comprar,,Transfiere el total de tu pedido. Solo con el comprobante se reserva el cupo.,,,,,,,,,,,SI
+Salado,Cómo comprar,,"Emitimos boletas y facturas. Además, estamos vigentes y habilitados como proveedores en Mercado Público.",,,,,,,,,,,SI
+Dulce,Mini postres,Envase plástico 60 cc,"Con tapa, incluye cuchara de madera.",Pannacotta de berries; Mousse de manjar; Tres leches manjar; Tiramisú; Suspiro limeño; Caluga frambuesa; Merengue frambuesa; Cheesecake de oreo; Torta de yogurt; Mousse de limón,50 un. (2 variedades),21000,100 un. (4 variedades),40000,,,,,,SI
+Dulce,Mini postres,Envase de vidrio 210 cc,Incluye cuchara de madera.,Pannacotta de berries; Mousse de manjar; Tres leches manjar; Tiramisú; Suspiro limeño; Caluga frambuesa; Merengue frambuesa; Cheesecake de oreo; Torta de yogurt; Mousse de limón,12 un. (1 variedad),27000,25 un. (2 variedades),52000,50 un. (3 variedades),100000,100 un. (5 variedades),200000,,SI
+Dulce,Mini postres,Formato familiar,"Envase de acrílico, aprox. 6 a 8 porciones.",,1 variedad,15500,,,,,,,,SI
+Dulce,Dulces de cóctel,Mini chilenitos,,Hojarasca rellena de manjar; Empolvados; Merenguitos con manjar; Maicenitas; Cocadas,50 un. (2 variedades),15500,100 un. (4 variedades),30000,,,,,,SI
+Dulce,Dulces de cóctel,Tradicional,,Brownie con nuez; Cheesecake de berries; Pie de limón; Tartaleta de fruta; Hojarasca rellena de caluga,50 un. (2 variedades),21000,100 un. (4 variedades),40000,,,,,,SI
+Dulce,Dulces de cóctel,Premium,,Kuchen de miga; Volcán de manjar; Alfajor con masa de nuez; Tacita de mantequilla de maní con chocolate; Pavlova; Caluga frambuesa,50 un. (2 variedades),32000,100 un. (4 variedades),60000,,,,,,SI
+Dulce,Tortas,Cuatro leches,"Bizcocho de cacao o vainilla a elección, remojado en tres leches artesanal y relleno con manjar. Cubierta con suave merengue italiano.",,20 cm (12 a 15 personas),24000,26 cm (26 a 28 personas),37500,,,,,,SI
+Dulce,Tortas,Cuatro leches frambuesa,"Bizcocho de cacao o vainilla a elección, remojado en tres leches artesanal y relleno con manjar y frambuesas. Cubierta con suave merengue italiano.",,20 cm (12 a 15 personas),26000,26 cm (26 a 28 personas),40000,,,,,,SI
+Dulce,Tortas,Yogurt,"Clásica torta de yogurt cremoso de frutilla con una base de bizcocho, cubierta con gelatina de frutilla.",,20 cm (12 a 15 personas),17000,26 cm (26 a 28 personas),32000,,,,,,SI
+Dulce,Tortas,Brownie,"Base de nuestro delicioso brownie, con topping de manjar y merengue italiano.",,14 cm (4 a 6 personas),13000,20 cm (12 a 15 personas),28000,26 cm (26 a 28 personas),40000,,,,SI
+Dulce,Tortas,Manjar nuez,Suave bizcocho relleno de manjar y nueces troceadas. Cubierta con crema chantilly.,,20 cm (12 a 15 personas),24000,26 cm (26 a 28 personas),35000,,,,,,SI
+Dulce,Tortas heladas,,"Recomendación: mantener en freezer y sacar 30 minutos antes de consumir. Envuelta, puede durar hasta un mes congelada.",,,,,,,,,,,SI
+Dulce,Tortas heladas,Caluga,"Capas de miga de galleta y nuez, con caluga artesanal.",,14 cm (4 a 6 personas),14000,20 cm (12 a 15 personas),28000,26 cm (26 a 28 personas),40000,,,,SI
+Dulce,Tortas heladas,Caluga frambuesa,"Capas de miga de galleta y nuez, caluga artesanal y frambuesas.",,14 cm (4 a 6 personas),15500,20 cm (12 a 15 personas),32000,26 cm (26 a 28 personas),47000,,,,SI
+Dulce,Tortas heladas,Merengue manjar,"Discos de merengue de producción propia, rellenos con crema chantilly y manjar.",,20 cm (12 a 15 personas),28500,26 cm (26 a 28 personas),45000,,,,,,SI
+Dulce,Tortas heladas,Merengue frambuesa,"Discos de merengue de producción propia, rellenos con crema chantilly y frambuesas.",,20 cm (12 a 15 personas),28500,26 cm (26 a 28 personas),45500,,,,,,SI
+Dulce,Tortas hojarasca,Pompadour,Hojarascas rellenas con capas intercaladas de crema batida y manjar con plátano natural. Cubierta con suave merengue italiano.,,14 cm (4 a 6 personas),12500,20 cm (12 a 15 personas),27500,26 cm (26 a 28 personas),42000,,,Extra opcional: almendras trozadas.,SI
+Dulce,Tortas hojarasca,Pastelera,Hojarasca rellena con capas intercaladas de crema pastelera artesanal y manjar. Cubierta con manjar y trozos de fina hojarasca.,,14 cm (4 a 6 personas),12500,20 cm (12 a 15 personas),27500,26 cm (26 a 28 personas),42000,,,,SI
+Dulce,Tortas hojarasca,Torta amor,"Hojarascas rellenas con reducción de frambuesas naturales, manjar y crema batida. Cubierta con suave merengue italiano.",,14 cm (4 a 6 personas),12500,20 cm (12 a 15 personas),28500,26 cm (26 a 28 personas),45000,,,,SI
+Dulce,Tortas hojarasca,Manjar,Hojarasca rellena con capas de manjar. Cubierta con suave merengue italiano.,,14 cm (4 a 6 personas),12000,20 cm (12 a 15 personas),26000,26 cm (26 a 28 personas),40000,,,,SI
+Dulce,Tortas hojarasca,Nuez,Hojarasca rellena con capas intercaladas de crema batida y una mezcla de manjar y nuez. Cubierta con suave merengue italiano.,,14 cm (4 a 6 personas),12500,20 cm (12 a 15 personas),28000,26 cm (26 a 28 personas),42500,,,,SI
+Dulce,Tortas hojarasca,Caluga frambuesa,Hojarasca rellena con capas intercaladas de caluga artesanal y reducción de frambuesas. Cubierta con suave merengue italiano.,,14 cm (4 a 6 personas),13000,20 cm (12 a 15 personas),28500,26 cm (26 a 28 personas),45000,,,,SI
+Dulce,Cómo comprar,,Revisa el catálogo y háblanos por WhatsApp al +569 821 95 945.,,,,,,,,,,,SI
+Dulce,Cómo comprar,,Siempre consulta por disponibilidad para el día que te interesa. Estamos agendando con mínimo 48 horas de anticipación.,,,,,,,,,,,SI
+Dulce,Cómo comprar,,Coordinemos la entrega.,,,,,,,,,,,SI
+Dulce,Cómo comprar,,Transfiere el total de tu pedido. Solo con el comprobante se reserva el cupo.,,,,,,,,,,,SI
+Dulce,Cómo comprar,,"Emitimos boletas y facturas. Además, estamos vigentes y habilitados como proveedores en Mercado Público.",,,,,,,,,,,SI
+</script>
+
+<script>
+const WA_ICON = document.getElementById('fab').innerHTML;
+const waLink = (msg) => `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(msg)}`;
+document.getElementById('fab').href = waLink('¡Hola! Vi el catálogo de La Ciprés y quiero hacer un pedido 😊');
+document.getElementById('ig').href = `https://instagram.com/${INSTAGRAM}`;
+
+function parseCSV(text){
+  const rows=[];let row=[],f='',q=false;
+  text=text.replace(/^﻿/,'');
+  for(let i=0;i<text.length;i++){
+    const c=text[i];
+    if(q){ if(c=='"'){ if(text[i+1]=='"'){f+='"';i++} else q=false } else f+=c }
+    else if(c=='"') q=true;
+    else if(c==','){row.push(f);f=''}
+    else if(c=='\n'||c=='\r'){ if(c=='\r'&&text[i+1]=='\n')i++; row.push(f);rows.push(row);row=[];f='' }
+    else f+=c;
+  }
+  if(f!==''||row.length){row.push(f);rows.push(row)}
+  const head=rows.shift().map(h=>h.trim().toLowerCase());
+  return rows.filter(r=>r.some(v=>v.trim()!=='')).map(r=>Object.fromEntries(head.map((h,i)=>[h,(r[i]||'').trim()])));
+}
+const esc=s=>s.replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const slug=s=>s.normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase().replace(/[^a-z0-9]+/g,'-');
+function price(v){
+  const d=v.replace(/[^\d]/g,'');
+  return d ? '$'+Number(d).toLocaleString('es-CL') : esc(v);
+}
+const isNo=v=>/^(no|n|false|0)$/i.test(v.trim());
+const HOW='cómo comprar';
+
+let DATA=[], current='Salado';
+
+function render(){
+  const items=DATA.filter(r=>r.catalogo.toLowerCase()===current.toLowerCase() && !isNo(r.disponible||''));
+  const cats=[];const by={};
+  items.forEach(r=>{const k=r.categoria||'Otros';if(!by[k]){by[k]=[];cats.push(k)}by[k].push(r)});
+  // "Cómo comprar" siempre al final
+  cats.sort((a,b)=>(a.toLowerCase()===HOW)-(b.toLowerCase()===HOW));
+  document.getElementById('nav').innerHTML=cats.map(c=>`<a href="#${slug(current+'-'+c)}">${esc(c)}</a>`).join('');
+  document.getElementById('menu').innerHTML = cats.length ? cats.map(c=>{
+    const rows=by[c];
+    let body;
+    if(c.toLowerCase()===HOW){
+      body=`<ol class="how">${rows.map(r=>`<li>${esc(r.descripcion||r.producto)}</li>`).join('')}</ol>
+      <a class="cta" target="_blank" rel="noopener" href="${waLink('¡Hola! Quiero cotizar un pedido del catálogo '+current.toLowerCase()+'.')}">${WA_ICON}Cotizar por WhatsApp</a>`;
+    } else body=rows.map(card).join('');
+    return `<section class="cat" id="${slug(current+'-'+c)}"><h2>${esc(c)}</h2>${body}</section>`;
+  }).join('') : '<p class="status">No hay productos disponibles en este momento.</p>';
+  spy();
+}
+function card(r){
+  const prices=[];
+  for(let i=1;i<=6;i++){ const p=r['precio'+i]; if(p) prices.push([r['precio'+i+'_detalle']||'',p]); }
+  const ops=(r.opciones||'').split(';').map(s=>s.trim()).filter(Boolean);
+  if(!r.producto && !prices.length && !ops.length) return `<div class="note">${esc(r.descripcion)}</div>`;
+  return `<article class="card">
+    ${r.producto?`<h3>${esc(r.producto)}</h3>`:''}
+    ${r.descripcion?`<p class="desc">${esc(r.descripcion)}</p>`:''}
+    ${ops.length?`<p class="chips-label">Variedades</p><ul class="chips">${ops.map(o=>`<li>${esc(o)}</li>`).join('')}</ul>`:''}
+    ${prices.length?`<ul class="prices">${prices.map(([d,p])=>`<li><span>${esc(d)}</span><span class="dots"></span><span class="p">${price(p)}</span></li>`).join('')}</ul>`:''}
+    ${r.nota?`<p class="extra">${esc(r.nota)}</p>`:''}
+  </article>`;
+}
+function setCat(c,scroll){
+  current=c;document.body.classList.toggle('dulce',c==='Dulce');
+  document.querySelectorAll('.switch button').forEach(b=>b.setAttribute('aria-selected',b.dataset.cat===c));
+  render(); if(scroll) window.scrollTo({top:0});
+  try{ history.replaceState(null,'','#'+c.toLowerCase()); }catch(e){ /* vista previa: se ignora */ }
+}
+document.querySelectorAll('.switch button').forEach(b=>b.onclick=()=>setCat(b.dataset.cat,true));
+
+let io;
+function spy(){
+  if(io) io.disconnect();
+  const links=[...document.querySelectorAll('nav.cats a')];
+  io=new IntersectionObserver(es=>es.forEach(e=>{ if(e.isIntersecting){
+    links.forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+e.target.id));
+    const on=links.find(a=>a.classList.contains('on')); const bar=document.getElementById('nav');
+    if(on) bar.scrollTo({left:on.offsetLeft-bar.clientWidth/2+on.offsetWidth/2,behavior:'smooth'});
+  }}),{rootMargin:'-120px 0px -65% 0px'});
+  document.querySelectorAll('section.cat').forEach(s=>io.observe(s));
+}
+
+async function load(){
+  let text=null;
+  if(SHEET_CSV_URL.startsWith('http')){
+    try{
+      const url=SHEET_CSV_URL+(SHEET_CSV_URL.includes('?')?'&':'?')+'t='+Date.now();
+      const res=await fetch(url,{cache:'no-store'});
+      if(res.ok){ const t=await res.text(); if(/catalogo/i.test(t.split('\n')[0])) text=t; }
+    }catch(e){ console.warn('No se pudo leer Google Sheets, uso respaldo',e); }
+  }
+  DATA=parseCSV(text||document.getElementById('respaldo').textContent);
+  const start=location.hash.toLowerCase().startsWith('#dulce')?'Dulce':'Salado';
+  setCat(start,false);
+}
+load();
+</script>
+</body>
+</html>
